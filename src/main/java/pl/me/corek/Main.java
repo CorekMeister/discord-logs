@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pl.me.corek.commands.DiscordReloadCommand;
 import pl.me.corek.config.Config;
 import pl.me.corek.discord.DiscordManager;
+import pl.me.corek.listeners.PlayerChatListener;
 import pl.me.corek.listeners.PlayerCommandListener;
 
 import java.io.File;
@@ -24,6 +25,7 @@ public final class Main extends JavaPlugin {
         getCommand("discordreload").setExecutor(new DiscordReloadCommand(this));
 
         getServer().getPluginManager().registerEvents(new PlayerCommandListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerChatListener(this), this);
 
         getLogger().info("Plugin Corek-Discord został włączony!");
     }

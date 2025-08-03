@@ -6,21 +6,21 @@ import com.google.gson.GsonBuilder;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-
 import java.util.List;
 
 public class Config {
 
     private static transient Config instance;
-
     public BotSettings botSettings;
     public CommandLogging commandLogging;
+    public ChatLogging chatLogging;
     public RemoteExecution remoteExecution;
     public Messages messages;
 
     public Config() {
         this.botSettings = new BotSettings();
         this.commandLogging = new CommandLogging();
+        this.chatLogging = new ChatLogging();
         this.remoteExecution = new RemoteExecution();
         this.messages = new Messages();
     }
@@ -65,20 +65,30 @@ public class Config {
     }
 
     public static class BotSettings {
+        public String statusFormat = "graczy online: {players}/{max_players}";
+        public long statusUpdateIntervalSeconds = 15;
         public String token = "TUTAJ_WKLEJ_TOKEN_BOTA";
-        public String activityMessage = "Logi serwera Minecraft";
     }
 
     public static class CommandLogging {
         public boolean enabled = true;
-        public String channelId = "ID_KANALU_DO_LOGOW";
+        public String channelId = "ID_KANALU_DO_LOGOW_KOMEND";
         public String logFormat = "`{player}` wykonał komendę: `{command}`";
         public List<String> ignoredCommands = Arrays.asList("/login", "/l", "/register", "/reg");
     }
 
+    public static class ChatLogging {
+        public boolean enabled = true;
+        public String channelId = "ID_KANALU_DO_LOGOW_CZATU";
+        public String chatFormat = "**{player}**: {message}";
+    }
+
     public static class RemoteExecution {
         public boolean enabled = true;
-        public String channelId = "ID_KANALU_DO_KOMEND";
+        public String commandName = "command";
+        public String commandDescription = "Wykonuje komendę na serwerze Minecraft.";
+        public String argumentName = "polecenie";
+        public String argumentDescription = "Komenda do wykonania (np. 'say Hello World')";
         public String requiredRoleId = "ID_ROLI_WYMAGANEJ_DO_KOMEND";
         public String consoleLogFormat = ":computer: **KONSOLA (DISCORD)**: `{command}`";
     }
