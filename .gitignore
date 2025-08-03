@@ -1,0 +1,22 @@
+# Pliki generowane przez Maven
+/target/
+/pom.xml.tag
+/pom.xml.releaseBackup
+/pom.xml.versionsBackup
+/release.properties
+/dependency-reduced-pom.xml
+/buildNumber.properties
+
+# Pliki logów
+*.log
+logs/
+
+# Pliki IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Inne
+.DS_Store

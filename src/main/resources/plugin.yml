@@ -1,0 +1,15 @@
+
+name: Corek-Discord
+version: '1.0'
+main: pl.me.corek.Main
+api-version: '1.18'
+description: Integruje serwer Minecraft z botem Discord do zapisywania komend i zdalnego ich wykonywania.
+authors: [CorekL]
+website: https://corek.dev/
+
+commands:
+  discordreload:
+    description: Przeładowuje konfigurację pluginu Corek-Discord.
+    usage: /discordreload
+    permission: corekdiscord.reload
+    aliases: [dreload, discordrl]
